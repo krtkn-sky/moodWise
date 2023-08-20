@@ -1,0 +1,79 @@
+
+<LoginScreen>:
+    GridLayout:
+        cols: 1
+        padding: 15,1
+        spacing: 20,20
+        Label:
+            text: "User login"
+        TextInput:
+            id: username
+            hint_text: "Username"
+        TextInput:
+            id: password
+            hint_text: "Password"
+        Button:
+            text: "Login"
+            on_press: root.login(root.ids.username.text,root.ids.password.text)
+        Label:
+            id: login_wrong
+            text: ""
+        GridLayout:
+            cols: 2
+            Button:
+                text: "Forgot Password ?"
+            Button:
+                on_press: root.sign_up()
+                text: "New User ?"
+
+<SignUpScreen>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Sign up to respond to your mood wisely !"
+        TextInput:
+            id: username
+            hint_text: "Username"
+        TextInput:
+            id: password
+            hint_text: "Password"
+        Button:
+            text: "Become a member !"
+            on_press: root.add_user(root.ids.username.text,root.ids.password.text)
+
+<SignUpSuccess>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Sign up Successful"
+        Button:
+            text: "Login"
+            on_press: root.go_to_login()
+
+<ContentScreen>:
+    GridLayout:
+        cols: 1
+        Button:
+            text: "Logout"
+            on_press: root.log_out()
+        Label:
+            text: "How do you feel ?"
+        TextInput:
+            id: feel
+            hint_text: "Calm, Energised, Motivated etc"
+        Button:
+            text: "Wnat's the wise thing to do ?"
+            on_press: root.get_quote(root.ids.feel.text)
+        Label:
+            id: quote
+            text: ""
+
+<RootWidget>:
+    LoginScreen:
+        name: "login_screen"
+    SignUpScreen:
+        name: "sign_up_screen"
+    SignUpSuccess:
+        name: "sign_up_success"
+    ContentScreen:
+        name: "content_screen"
